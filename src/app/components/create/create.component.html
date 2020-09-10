@@ -1,0 +1,51 @@
+<!--Create html, here define the form that you can create a new job-->
+<div class="container">
+
+
+    <h2>{{name}}</h2>
+
+    <div class="message success" *ngIf="status=='success'">
+        This Job was created successfully 
+    </div>
+    <div class="message failed" *ngIf="status == 'failed'">
+        This Job was not saved.
+    </div>
+
+      <form #jobForm="ngForm" (ngSubmit)="onSumbit(jobForm)">
+        <p>
+            <label for="title">Title Project</label>
+            <input type="text" name="title" #title="ngModel" [(ngModel)]="job.title" required> 
+            <span class="form_error" *ngIf="title.touched && !title.valid">
+                The title is required
+            </span>
+        </p>
+        <p>
+            <label for="description">Description</label>
+            <textarea name="description" #description="ngModel" [(ngModel)]="job.description" required></textarea> 
+            <span class="form_error" *ngIf="description.touched && !description.valid">
+                The description is required
+            </span>
+        </p>
+
+        
+        <p>
+            <label for="keywords">Keywords</label>
+            <input type="text" name="keywords" #keywords="ngModel" [(ngModel)]="job.keywords" required> 
+            <span class="form_error" *ngIf="keywords.touched && !keywords.valid">
+                The keywords is required
+            </span>
+        </p>
+
+
+        <p>
+            <label for="location">location</label>
+            <input type="text" name="location" #location="ngModel" [(ngModel)]="job.location" required> 
+            <span class="form_error" *ngIf="location.touched && !location.valid">
+                The location is required
+            </span>
+        </p>
+
+        <input type="submit" value="Send" [disabled]="!jobForm.form.valid">
+    </form>
+</div>
+       

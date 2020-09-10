@@ -1,0 +1,26 @@
+<!--In this page you could see all jobs that is register-->
+<div class="container">
+    <h2>Jobs</h2>
+
+    <table class="job">
+        
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Keywords</th>
+          <th>Location</th>
+          <th>Detail</th>
+        </tr>
+        <tr *ngFor="let job of jobs">
+          <td>{{job.title}}</td>
+          <td>{{job.description}}</td>
+          <td>{{job.keywords}}</td>
+          <td>{{job.location}}</td>
+          <td><a [routerLink]="['/job',job._id]"> Click </a>
+             </td>
+        </tr>
+        
+      </table>
+      <br>
+    
+</div>
